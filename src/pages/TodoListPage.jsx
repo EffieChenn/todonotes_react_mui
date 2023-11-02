@@ -18,7 +18,7 @@ const TodoListPage = () => {
       .catch((error) => console.error("error：", error));
   }, []);
 
-  const handleCreateTask = () => {
+  const createTask = () => {
     fetch("/api/tasks", {
       method: "POST",
       headers: {
@@ -33,7 +33,6 @@ const TodoListPage = () => {
           console.log("NEW DATA", data);
         });
       setNewTask("");
-      window.location.reload();
     });
   };
 
@@ -61,10 +60,15 @@ const TodoListPage = () => {
         <AddTask
           newTask={newTask}
           setNewTask={setNewTask}
-          handleCreateTask={handleCreateTask}
+          createTask={createTask}
         />
         {tasks.map((task, index) => (
-          <TaskItem key={index} task={task} setTasks={setTasks} />
+          <TaskItem
+            key={task?.id || `task-${index}`}
+            task={task}
+            tasks={tasks}
+            setTasks={setTasks}
+          />
         ))}
       </Box>
     </Container>

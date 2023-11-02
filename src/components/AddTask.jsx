@@ -14,11 +14,7 @@ const AddTask = (props) => {
           props.setNewTask(e.target.value);
         }}
       />
-      <Button
-        variant="contained"
-        color="warning"
-        onClick={props.handleCreateTask}
-      >
+      <Button variant="contained" color="warning" onClick={props.createTask}>
         Add
       </Button>
     </Box>

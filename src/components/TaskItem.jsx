@@ -23,8 +23,6 @@ const TaskItem = (props) => {
   const [edited, setEdited] = useState(false);
   const [updatedTask, setUpdatedTask] = useState(props.task?.title);
 
-  // const [todo, setTodo] = useState({ title: "", completed: false });
-
   const updateTask = () => {
     fetch(`/api/tasks/${props.task.id}`, {
       method: "PUT",
@@ -57,7 +55,6 @@ const TaskItem = (props) => {
       fetch("/api/tasks")
         .then((response) => response.json())
         .then((data) => {
-          console.log("COMPLETED DATA", data);
           props.setTasks(data);
         });
     });
@@ -73,7 +70,6 @@ const TaskItem = (props) => {
       fetch("/api/tasks")
         .then((response) => response.json())
         .then((data) => props.setTasks(data));
-      window.location.reload();
     });
   };
 
@@ -91,8 +87,8 @@ const TaskItem = (props) => {
           icon={<RadioButtonUncheckedIcon />}
           checkedIcon={<TaskAltIcon />}
           checked={completed}
-          onChange={() => {
-            setCompleted(!completed);
+          onChange={(e) => {
+            setCompleted(e.target.checked);
           }}
         />
         <Box display={"flex"} alignItems={"center"}>
