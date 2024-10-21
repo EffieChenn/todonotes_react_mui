@@ -8,11 +8,11 @@ import Link from "@mui/material/Link";
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
-      {"Copyright © "}
+      {" © "}
+      {new Date().getFullYear()}{" "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
+        TO-NOTES-DO
+      </Link>
       {"."}
     </Typography>
   );
@@ -41,7 +41,7 @@ export default function Footer() {
       >
         <Container maxWidth="sm">
           <Typography variant="body1">
-            My sticky footer can be found here.
+            This is a task and notes management site.
           </Typography>
           <Copyright />
         </Container>
